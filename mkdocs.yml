@@ -1,1 +1,18 @@
-site_name: My Docs
+site_name: Sitio de ANDRES FRUTOS
+
+nav:
+  - Principal: index.md
+  - Acerca de: about.md
+  - Primero documento: pract1.md
+  - Segundo documento: pract2.md
+
+theme: 
+  name: material
+  palette:
+    primary: black
+    accent: orange
+  font:
+    text: Montserrat
+    code: Montserrat
+  logo: logo/logo.jpg
+  lenguaje: es
