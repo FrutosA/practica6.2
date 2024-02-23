@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../pract1/">
       
-      
-        <link rel="next" href="../pract1/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Acerca de - Sitio de ANDRES FRUTOS</title>
+        <title>Segundo documento - Sitio de ANDRES FRUTOS</title>
       
     
     
@@ -70,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about-andres" class="md-skip">
+        <a href="#instalacion_pilalamp_enrhel" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Acerca de
+              Segundo documento
             
           </span>
         </div>
@@ -214,19 +212,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -235,7 +224,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -264,10 +252,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../pract2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -276,6 +273,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -313,8 +311,167 @@
                   
 
 
-<h1 id="about-andres">ABOUT ANDRES</h1>
-<p>este es el contenido del about .md</p>
+<h1 id="instalacion_pilalamp_enrhel">Instalacion_PilaLAMP_enRHEL</h1>
+<h1 id="creacion_completa_pila_lamp">Creacion_completa_pila_LAMP</h1>
+<h2 id="creacion-de-una-maquina-en-un-laboratorio-de-aws">Creación de una maquina en un laboratorio de AWS.</h2>
+<p>1º Lo primero que tenemos que hacer es Lanzar la instancia.</p>
+<p><img alt="" src="../images/images2/captura_1.png" /></p>
+<p>2º Seleccionamos el S.O., que en este caso es Rethat.</p>
+<p><img alt="" src="../images/images2/cap_2.2.png" /></p>
+<p>3º Elegimos el tipo de instancia. ( Minimo 4 Gb de RAM ).</p>
+<p><img alt="" src="../images/images2/cap_3.2.png" /></p>
+<p>4º Seleccionamos el par de claves que nosotros ya hemos descargado antes de iniciar el laboratorio. Nosotros la renombramos y seleccionamos Vockey.pem (la cual tendrá que tener los permisos cambiados).</p>
+<p><img alt="" src="../images/images2/captura_4.png" /></p>
+<p>5º  Al grupo de seguridad le añadimos todos los servicios y la lanzamos:</p>
+<p><img alt="" src="../images/images2/captura_5.png" /></p>
+<h3 id="asignar-una-ip-a-nuestra-instancia">Asignar una Ip a nuestra instancia.</h3>
+<p>1º Nos vamos a <em>Direcciones IP estaticas</em> y asignamos una nueva IP elastica:</p>
+<p><img alt="" src="../images/images2/captura_6.png" /></p>
+<p>2º Asignamos la IP</p>
+<p><img alt="" src="../images/images2/captura_7.png" /></p>
+<p>3º Una vez tenemos la IP, solo queda Asignarle a esta una instancia.</p>
+<p><img alt="" src="../images/images2/captura_8.png" /></p>
+<p>4º Seleccionamos la instancia y la asociamos. Así cada vez que reiniciemos el laboriatorio no cambiará la IP de la instancia.</p>
+<p><img alt="" src="../images/images2/captura_9.png" /></p>
+<h2 id="instalacion-de-la-pila-lamp">Instalación de la pila LAMP</h2>
+<p>Lo primero de todo configuramos el script para que se muestren los comandos que que se ejecutan <strong>( set -x )</strong>  y actualizamos los paquetes <strong>( dnf update -y )</strong>.</p>
+<p>1º Instalamos Apache.</p>
+<pre><code>sudo dnf install httpd -y
+
+</code></pre>
+<p>2º Reiniciamos el servicio.</p>
+<pre><code>sudo systemctl start httpd
+
+</code></pre>
+<p>3º Habilitar el servicio para que se inicie automáticamente después de cada reinicio.</p>
+<pre><code>sudo systemctl enable httpd
+
+</code></pre>
+<p>4º  Comprobamos el estado.</p>
+<pre><code>sudo systemctl status httpd
+
+</code></pre>
+<p>5º Instalamos el sistema gestor de base de datos MySQL.</p>
+<pre><code>sudo dnf install mysql-server -y
+
+</code></pre>
+<p>6º Iniciamos el servicio.</p>
+<pre><code>sudo systemctl start mysqld
+
+</code></pre>
+<p>7º Iniciamos el servicio para que se inicie automaticamente.</p>
+<pre><code>sudo systemctl enable mysqld
+
+</code></pre>
+<p>8º Comprobamos si esta iniciado.</p>
+<pre><code>sudo systemctl status httpd
+
+</code></pre>
+<p>9º Instalamos el interprete de comandos PHP.</p>
+<pre><code>sudo dnf install php -y
+
+</code></pre>
+<p>10º Instalamos la extensión de PHP para MySql.</p>
+<pre><code>sudo dnf install php-mysqlnd -y
+
+</code></pre>
+<p>11º Reiniciamos el servicio Apache.</p>
+<pre><code>sudo systemctl restart httpd
+
+</code></pre>
+<p>12º Copiamos el archivo info.php en /var/www/html.</p>
+<pre><code>sudo cp ../php/info.php /var/www/html
+
+</code></pre>
+<p>13º Cambiamos el propietario y el grupo de directorio /var/www/html</p>
+<pre><code>chown -R apache:apache /var/www/html
+
+</code></pre>
+<h2 id="archivo-de-las-variables-env">Archivo de las variables (.env)</h2>
+<pre><code>PMA_USER=andres
+PMA_PASS=Afruruz738
+PMA_DB=phpmyadmin
+
+</code></pre>
+<h2 id="instalacion-de-las-herramientas-adicionales-de-la-pila-lamp">Instalación de las herramientas adicionales de la pila LAMP.</h2>
+<p>Lo primero de todo configuramos el script para que se muestren los comandos que que se ejecutan <strong>( set -x )</strong>.</p>
+<p>1º Declaramos la variables.</p>
+<pre><code>source .env
+
+</code></pre>
+<p>2º Actualizamos los paquetes.</p>
+<pre><code>dnf update -y
+
+</code></pre>
+<p>3º Instalamos los modulos necesarios para la instalacion de PHPMYADMIN.</p>
+<pre><code>sudo dnf install php-mbstring php-zip php-json php-gd php-fpm php-xml -y
+
+</code></pre>
+<p>4º Reiniciamos el servicio Apache.</p>
+<pre><code>sudo systemctl restart httpd
+
+</code></pre>
+<p>5º Instalamos la utilidad wget para poder descomprimir PHPMYADMIN.</p>
+<pre><code>sudo dnf install wget -y
+
+</code></pre>
+<p>6º Eliminamos descargas previas de PhpMyAdmin.</p>
+<pre><code>rm -rf /tmp/phpMyAdmin-5.2.1-all-languages.zip
+
+</code></pre>
+<p>7º Eliminamos instalaciones previas de phpMyAdmin.</p>
+<pre><code>rm -rf /var/www/html/phpmyadmin
+
+</code></pre>
+<p>8º Descargamos el codigo fuente de PHPMYADMIN.</p>
+<pre><code>sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.zip -P /tmp
+
+</code></pre>
+<p>9º Descargamos la utilidad Unzip.</p>
+<pre><code>sudo dnf install unzip -y
+
+</code></pre>
+<p>10º Descomprimimos el Zip recien descargado.</p>
+<pre><code>unzip -u /tmp/phpMyAdmin-5.2.1-all-languages.zip -d /var/www/html
+
+</code></pre>
+<p>11º Renombramos el direcctorio de PhpMyAdmin.</p>
+<pre><code>mv /var/www/html/phpMyAdmin-5.2.1-all-languages /var/www/html/phpmyadmin
+
+</code></pre>
+<p>12º Actualizamos los permisos del directorio /var/www/html.</p>
+<pre><code>sudo chown -R apache:apache /var/www/html
+
+</code></pre>
+<p>13º Creamos el archivo de configuración a partir del archivo de ejemplo.</p>
+<pre><code>sudo cp /var/www/html/phpmyadmin/config.sample.inc.php /var/www/html/phpmyadmin/config.inc.php
+
+</code></pre>
+<p>14º  Generamos un valor aleatorio de 32 caracteres para la variable blowfish_secret.</p>
+<pre><code>RANDOM_VALUE=`openssl rand -hex 16`
+
+</code></pre>
+<p>15º Cambiamos dentro del archivo de configuración para qu nos quite el fallo cuando nos conectamos a phpmyadmin. Modificamos la variable blowfish_secret en el archivo de configuración.</p>
+<pre><code>sed -i &quot;s/\(\$cfg\['blowfish_secret'\] =\).*/\1 '$RANDOM_VALUE';/&quot; /var/www/html/phpmyadmin/config.inc.php
+
+sed &quot;/blowfish_secret/a \$cfg\['TempDir'\] = '/tmp';&quot; /var/ww/html/phpmyadmin/config.inc.php
+
+</code></pre>
+<p>16º Eliminamos si existe alguna base de datos previa de phpMyAdmin.</p>
+<pre><code>mysql -u  root &lt;&lt;&lt; &quot;DROP DATABASE IF EXITS phpmyadmin&quot;
+
+</code></pre>
+<p>17º Importamos el scrit de creación de base de datos de phpmyadmin.</p>
+<pre><code>sudo mysql -u root &lt; /var/www/html/phpmyadmin/sql/create_tables.sql
+
+</code></pre>
+<p>18º Creamos el usuario para la base de datos y le damos privilegios.</p>
+<pre><code>sudo mysql -u root &lt;&lt;&lt; &quot;DROP USER IF EXISTS $PMA_USER@'%'&quot;
+sudo mysql -u root &lt;&lt;&lt; &quot;CREATE USER $PMA_USER@'%' IDENTIFIED BY '$PMA_PASS'&quot;
+sudo mysql -u root &lt;&lt;&lt; &quot;GRANT ALL PRIVILEGES ON $PMA_DB.* TO $PMA_USER@'%'&quot;
+
+
+</code></pre>
 
 
 
